@@ -23,6 +23,7 @@
     "*.{js,json,html,md,yml}": "prettier --write"
   },
   "dependencies": {
+    "maplibre-gl": "^5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router": "^8",

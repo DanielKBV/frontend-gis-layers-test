@@ -78,3 +78,18 @@ export const Counter = styled.span`
     12px ui-monospace,
     monospace;
 `;
+
+export const SplitLayout = styled.main`
+  display: grid;
+  grid-template-columns: 540px 1fr;
+  height: calc(100vh - 48px);
+`;
+
+export const Sidebar = styled.div`
+  padding: 16px;
+  overflow-y: auto;
+`;
+
+export const MapArea = styled.div`
+  position: relative;
+`;
