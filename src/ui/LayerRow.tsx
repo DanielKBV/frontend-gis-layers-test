@@ -3,7 +3,7 @@ import type { LayerId } from "../domain/layer.types";
 import { useLayersController } from "../state/controllerContext";
 import { useLayer } from "../state/hooks";
 import { LayerStatus } from "./LayerStatus";
-import { Row, Title } from "./styled";
+import { LayerLabel, Row, Title } from "./styled";
 
 interface Props {
   readonly id: LayerId;
@@ -21,13 +21,14 @@ export const LayerRow = memo(function LayerRow({ id, children }: Props) {
   // its own layer changes, and then its children re-render regardless.
   return (
     <Row>
-      <input
-        type="checkbox"
-        checked={layer.enabled}
-        onChange={(e) => setEnabled(id, e.target.checked)}
-        aria-label={layer.title}
-      />
-      <Title>{layer.title}</Title>
+      <LayerLabel>
+        <input
+          type="checkbox"
+          checked={layer.enabled}
+          onChange={(e) => setEnabled(id, e.target.checked)}
+        />
+        <Title>{layer.title}</Title>
+      </LayerLabel>
       <input
         type="range"
         min={0}

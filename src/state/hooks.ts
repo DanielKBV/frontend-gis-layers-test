@@ -1,7 +1,7 @@
 /**
  * Subscriptions via useSyncExternalStore instead of vedro's useSelector, which subscribes
- * to "@state" (every component on every dispatch, falling back to two JSON.stringify when
- * the selected value isn't `===`), freezes the selector with
+ * to "@state" (every component on every dispatch runs two JSON.stringify — the `===`
+ * result is unconditionally overwritten by the stringify one), freezes the selector with
  * useEffect(..., []) and tears under concurrent rendering (lib/hooks/useStoreSelector.hook.js).
  * vedro's core fits the contract as is: on(key, cb) → unsubscribe, get(key) → snapshot.
  */

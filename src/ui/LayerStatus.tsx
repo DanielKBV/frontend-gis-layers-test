@@ -1,5 +1,5 @@
 import type { LayerLoad } from "../domain/layer.types";
-import { Badge } from "./styled";
+import { Badge, ErrorBadge } from "./styled";
 
 interface Props {
   readonly load: LayerLoad;
@@ -16,14 +16,14 @@ export function LayerStatus({ load, onRetry }: Props) {
       return <Badge $tone="ok">{load.payload.featureCount} объектов</Badge>;
     case "error":
       return (
-        <Badge $tone="err">
+        <ErrorBadge $tone="err">
           {load.error.message}
           {load.error.retryable && (
             <button type="button" onClick={onRetry}>
               Повторить
             </button>
           )}
-        </Badge>
+        </ErrorBadge>
       );
     default:
       // A new status added to LayerLoad becomes a compile error here.

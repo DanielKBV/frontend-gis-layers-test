@@ -22,7 +22,7 @@ export const MapView = memo(function MapView() {
     const m = new MapLibreMap({
       container: ref.current,
       style: "https://demotiles.maplibre.org/style.json", // no API key needed
-      center: [74.59, 42.87], // Bishkek
+      center: [74.75, 41.25], // middle of Kyrgyzstan's bounding box, so the whole country fits
       zoom: 6,
     });
     m.once("load", () => setMap(m));

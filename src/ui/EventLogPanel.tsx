@@ -25,7 +25,7 @@ export function EventLogPanel({ log }: { readonly log: EventLog }) {
   if (entries.length === 0) return <Hint>Журнал пуст — включите слой.</Hint>;
   return (
     <LogList>
-      {entries.map((e) => (
+      {[...entries].reverse().map((e) => (
         <LogLine key={`${e.at}-${e.id}-${e.n}-${e.event}`} $tone={LABELS[e.event].tone}>
           {line(e)}
         </LogLine>

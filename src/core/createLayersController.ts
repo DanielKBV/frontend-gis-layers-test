@@ -107,6 +107,8 @@ export function createLayersController(
     },
     replaceLayers(layers) {
       abortAll();
+      // seq restarts at #1 for the new set; old entries with the same numbers would only mislead.
+      log.clear();
       // Atomic: both top-level keys already exist, so vedro's key check in updateParial passes.
       store.dispatch({
         byId: Object.fromEntries(layers.map((l) => [l.id, l])) as Record<LayerId, Layer>,
