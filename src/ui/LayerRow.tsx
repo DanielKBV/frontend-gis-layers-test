@@ -1,11 +1,17 @@
-import { memo } from "react";
+import { memo, type ReactNode } from "react";
 import type { LayerId } from "../domain/layer.types";
 import { useLayersController } from "../state/controllerContext";
 import { useLayer } from "../state/hooks";
 import { LayerStatus } from "./LayerStatus";
 import { Row, Title } from "./styled";
 
-export const LayerRow = memo(function LayerRow({ id }: { readonly id: LayerId }) {
+interface Props {
+  readonly id: LayerId;
+  /** Extra trailing cell, e.g. the render counter on /stress. */
+  readonly children?: ReactNode;
+}
+
+export const LayerRow = memo(function LayerRow({ id, children }: Props) {
   const layer = useLayer(id);
   const { setEnabled, setOpacity, retry } = useLayersController();
   // Layer removed by replaceLayers; this row unmounts on the list's next render.
@@ -33,6 +39,7 @@ export const LayerRow = memo(function LayerRow({ id }: { readonly id: LayerId })
         aria-label={`Прозрачность: ${layer.title}`}
       />
       <LayerStatus load={layer.load} onRetry={() => retry(id)} />
+      {children}
     </Row>
   );
 });

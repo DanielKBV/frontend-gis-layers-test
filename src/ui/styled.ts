@@ -11,7 +11,7 @@ export const List = styled.ul`
 
 export const Row = styled.li`
   display: grid;
-  grid-template-columns: auto 140px 120px 1fr;
+  grid-template-columns: auto 140px 120px 1fr auto;
   align-items: center;
   gap: 12px;
   padding: 8px 12px;
@@ -70,4 +70,11 @@ export const LogLine = styled.li<{ readonly $tone?: keyof typeof TONES | undefin
   white-space: pre;
   color: ${(p) => (p.$tone ? TONES[p.$tone] : "inherit")};
   font-weight: ${(p) => (p.$tone === "err" ? 600 : 400)};
+`;
+
+export const Counter = styled.span`
+  color: #57606a;
+  font:
+    12px ui-monospace,
+    monospace;
 `;

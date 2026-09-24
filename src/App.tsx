@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router";
 import { createMockLayersApi } from "./api/createMockLayersApi";
 import { createLayersController } from "./core/createLayersController";
 import { createEventLog } from "./core/eventLog";
 import { MapPage } from "./pages/MapPage";
+import { StressPage } from "./pages/StressPage";
 import { LayersControllerProvider } from "./state/controllerContext";
 import { LayersProvider, layersStore } from "./state/layersStore";
 
@@ -16,8 +17,13 @@ export function App() {
     <LayersProvider>
       <LayersControllerProvider controller={controller}>
         <BrowserRouter>
+          <nav style={{ display: "flex", gap: 16, padding: "12px 16px 0" }}>
+            <NavLink to="/">Карта</NavLink>
+            <NavLink to="/stress">Стресс-тест</NavLink>
+          </nav>
           <Routes>
             <Route path="/" element={<MapPage api={api} log={eventLog} />} />
+            <Route path="/stress" element={<StressPage />} />
           </Routes>
         </BrowserRouter>
       </LayersControllerProvider>
