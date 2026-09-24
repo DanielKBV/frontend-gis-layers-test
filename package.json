@@ -25,6 +25,8 @@
   "dependencies": {
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "react-router": "^8",
+    "styled-components": "^6",
     "vedro": "1.1.0"
   },
   "devDependencies": {
