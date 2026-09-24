@@ -17,7 +17,7 @@ export function App() {
       <LayersControllerProvider controller={controller}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MapPage />} />
+            <Route path="/" element={<MapPage api={api} log={eventLog} />} />
           </Routes>
         </BrowserRouter>
       </LayersControllerProvider>

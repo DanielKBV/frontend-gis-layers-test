@@ -66,6 +66,9 @@ export function createMockLayersApi(opts: MockOptions): MockLayersApi {
     },
     setChaos(on) {
       chaos = on;
+      // Count parity from the toggle, not from page load: otherwise earlier normal requests
+      // shift the schedule and on→off→on may start with the fast request.
+      calls.clear();
     },
   };
 }
